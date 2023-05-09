@@ -7,12 +7,12 @@ import lombok.Data;
 public class RestBean<T> {
     private int status;
     private boolean success;
-    private T message;
+    private T date;
 
     private RestBean(int status, boolean success, T message) {
         this.status = status;
         this.success = success;
-        this.message = message;
+        this.date = message;
     }
 
     public static <T> RestBean<T> success() {

@@ -33,6 +33,7 @@ public class SecurityConfiguration {
         return http
                 //登录检验
                 .authorizeHttpRequests()
+                .requestMatchers("/api/auth/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 //表单登录
