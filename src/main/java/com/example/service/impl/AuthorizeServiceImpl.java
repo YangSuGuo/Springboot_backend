@@ -74,6 +74,7 @@ public class AuthorizeServiceImpl implements AuthorizeService {
         String result = HttpUtil.get(authUrl);
         JSONObject jsonObject = JSONUtil.parseObj(result);
         String openId = jsonObject.getStr("openid");
+
         if (openId != null){
             return openId;
         } else {
