@@ -6,10 +6,7 @@ import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpSession;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Validated
 @RestController
@@ -43,4 +40,11 @@ public class AuthorizeController {
         else
             return RestBean.failure(400);
     }
+    /**
+     * todo 获取文章内容（简）
+     */
+
+    /**
+     * todo 获取文章正文 Post 文章id
+     */
 }
