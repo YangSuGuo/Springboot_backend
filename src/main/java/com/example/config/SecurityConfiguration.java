@@ -33,6 +33,7 @@ public class SecurityConfiguration {
         return http
                 //登录检验
                 .authorizeHttpRequests()
+                //允许/api/auth开头的访问无需认证
                 .requestMatchers("/api/auth/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
@@ -90,8 +91,10 @@ public class SecurityConfiguration {
         return new BCryptPasswordEncoder();
     }
 
-    //登录失败
-    public void LoginFailed(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException {
+    //身份认证失败
+    public void LoginFailed(HttpServletRequest request,
+                            HttpServletResponse response,
+                            AuthenticationException exception) throws IOException {
         response.setCharacterEncoding("UTF-8");
         response.getWriter().write(JSONObject.toJSONString(RestBean.failure(401, exception.getMessage())));
     }
@@ -100,7 +103,6 @@ public class SecurityConfiguration {
     public void LoginSuccessful(HttpServletRequest request,
                                 HttpServletResponse response,
                                 Authentication authentication) throws IOException {
-        //使用utf-8会产生乱码
         response.setCharacterEncoding("UTF-8");
         response.getWriter().write(JSONObject.toJSONString(RestBean.success("登陆成功！")));
     }

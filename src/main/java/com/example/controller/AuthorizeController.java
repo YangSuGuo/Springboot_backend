@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.example.entity.RestBean;
 import com.example.entity.writing.Essay;
 import com.example.service.AuthorizeService;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Objects;
 
 @Validated
 @RestController
@@ -52,15 +54,19 @@ public class AuthorizeController {
     /**
      * 获取文章概述
      */
-
-    @PostMapping("/essay/list")
-    public ResponseEntity<List<Essay>> list(@Length(min = 2, max = 32) @RequestParam("parameter") String parameter) {
+/*    @PostMapping("/essay/list")
+    public ResponseEntity<List<Essay>> list(@Length(min = 2, max = 20) @RequestParam("parameter") String parameter) {
         List<Essay> list = service.getlist(parameter);
         return new ResponseEntity<>(list, HttpStatus.OK);
-    }
-}
+    }*/
 
+    @PostMapping("/essay/list")
+    public String list (@Length(min = 2, max = 20) @RequestParam("parameter") String parameter) {
+        List<Essay> list = service.getlist(parameter);
+        return JSONObject.toJSONString(RestBean.success(list));
+    }
 /**
  * todo 获取文章正文 Post 文章id
  */
 
+}
