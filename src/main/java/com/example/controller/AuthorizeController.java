@@ -1,12 +1,20 @@
 package com.example.controller;
 
 import com.example.entity.RestBean;
+import com.example.entity.writing.Essay;
 import com.example.service.AuthorizeService;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpSession;
 import org.hibernate.validator.constraints.Length;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @Validated
 @RestController
@@ -40,11 +48,19 @@ public class AuthorizeController {
         else
             return RestBean.failure(400);
     }
-    /**
-     * todo 获取文章内容（简）
-     */
 
     /**
-     * todo 获取文章正文 Post 文章id
+     * 获取文章概述
      */
+
+    @PostMapping("/essay/list")
+    public ResponseEntity<List<Essay>> list(@Length(min = 2, max = 32) @RequestParam("parameter") String parameter) {
+        List<Essay> list = service.getlist(parameter);
+        return new ResponseEntity<>(list, HttpStatus.OK);
+    }
 }
+
+/**
+ * todo 获取文章正文 Post 文章id
+ */
+

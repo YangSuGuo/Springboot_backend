@@ -4,6 +4,7 @@ import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.example.entity.user.Account;
+import com.example.entity.writing.Essay;
 import com.example.mapper.usermapper;
 import com.example.service.AuthorizeService;
 import jakarta.annotation.Resource;
@@ -13,8 +14,13 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AuthorizeServiceImpl implements AuthorizeService {
+    @Resource
+    usermapper mapper;
+    BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
     /**
      * 小程序appId
      */
@@ -25,10 +31,6 @@ public class AuthorizeServiceImpl implements AuthorizeService {
      */
     @Value("${wx.secret}")
     private String secret;
-    @Resource
-    usermapper mapper;
-
-    BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     /**
      * 登录
@@ -75,10 +77,22 @@ public class AuthorizeServiceImpl implements AuthorizeService {
         JSONObject jsonObject = JSONUtil.parseObj(result);
         String openId = jsonObject.getStr("openid");
 
-        if (openId != null){
+        if (openId != null) {
             return openId;
         } else {
             return "code错误";
         }
     }
+
+    /**
+     * 获取卡片列表
+     */
+    @Override
+    public List<Essay> getlist(String parameter) {
+        List<Essay> s = mapper.QueryByTag(parameter);
+        return s;
+    }
+/**
+ *
+ */
 }
