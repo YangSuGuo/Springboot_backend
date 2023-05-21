@@ -92,7 +92,13 @@ public class AuthorizeServiceImpl implements AuthorizeService {
         List<Essay> s = mapper.QueryByTag(parameter);
         return s;
     }
-/**
- *
- */
+
+    /**
+     * 获取文章正文
+     */
+    @Override
+    public Essay getarticle(int aid) {
+        Essay s = mapper.QuerythebodyoftheArticle(aid);
+        return s;
+    }
 }

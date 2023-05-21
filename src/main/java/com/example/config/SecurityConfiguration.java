@@ -104,6 +104,6 @@ public class SecurityConfiguration {
                                 HttpServletResponse response,
                                 Authentication authentication) throws IOException {
         response.setCharacterEncoding("UTF-8");
-        response.getWriter().write(JSONObject.toJSONString(RestBean.success("登陆成功！")));
+        response.getWriter().write(JSONObject.toJSONString(RestBean.success("yes")));
     }
 }

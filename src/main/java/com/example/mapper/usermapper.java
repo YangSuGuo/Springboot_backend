@@ -26,7 +26,7 @@ public interface usermapper {
      * 文章正文
      */
     @Select("SELECT aid,text FROM article WHERE aid= #{aid}")
-    Essay QuerythebodyoftheArticle(String aid);
+    Essay QuerythebodyoftheArticle(int aid);
 
     /**
      * 注册

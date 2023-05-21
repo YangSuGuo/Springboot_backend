@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver  #Mysql驱动
+    url: jdbc:mysql://localhost:3306/item1_3?useUnicode=true&characterEncoding=utf-8  #连接Mysql
+    username: root  #MySql账号
+    password: 5409  #MySql密码
+
+wx:
+  appId: "wxba174023b38ce425"  #小程序appId
+  secret: "ef6cbddcf42ea882bc748487c0bcffad"  #小程序密钥

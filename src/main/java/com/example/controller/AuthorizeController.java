@@ -7,8 +7,6 @@ import com.example.service.AuthorizeService;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpSession;
 import org.hibernate.validator.constraints.Length;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Objects;
 
 @Validated
 @RestController
@@ -59,14 +56,18 @@ public class AuthorizeController {
         List<Essay> list = service.getlist(parameter);
         return new ResponseEntity<>(list, HttpStatus.OK);
     }*/
-
     @PostMapping("/essay/list")
-    public String list (@Length(min = 2, max = 20) @RequestParam("parameter") String parameter) {
+    public String list(@Length(min = 2, max = 20) @RequestParam("parameter") String parameter) {
         List<Essay> list = service.getlist(parameter);
         return JSONObject.toJSONString(RestBean.success(list));
     }
-/**
- * todo 获取文章正文 Post 文章id
- */
 
+    /**
+     * 获取文章正文 Post 文章id
+     */
+    @PostMapping("/essay/article")
+    public String article(@RequestParam("aid") int aid) {
+        Essay s = service.getarticle(aid);
+        return JSONObject.toJSONString(RestBean.success(s));
+    }
 }

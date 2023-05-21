@@ -22,7 +22,8 @@ public interface AuthorizeService extends UserDetailsService {
     List<Essay> getlist(String parameter);
 
     /**
-     *  todo 获取文章正文
+     * 获取文章正文
      */
+    Essay getarticle(int aid);
 }
 
