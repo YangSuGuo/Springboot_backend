@@ -7,6 +7,8 @@ import com.example.service.AuthorizeService;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpSession;
 import org.hibernate.validator.constraints.Length;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -51,16 +53,16 @@ public class AuthorizeController {
     /**
      * 获取文章概述
      */
-/*    @PostMapping("/essay/list")
+    @PostMapping("/essay/list")
     public ResponseEntity<List<Essay>> list(@Length(min = 2, max = 20) @RequestParam("parameter") String parameter) {
         List<Essay> list = service.getlist(parameter);
         return new ResponseEntity<>(list, HttpStatus.OK);
-    }*/
-    @PostMapping("/essay/list")
+    }
+   /* @PostMapping("/essay/list")
     public String list(@Length(min = 2, max = 20) @RequestParam("parameter") String parameter) {
         List<Essay> list = service.getlist(parameter);
         return JSONObject.toJSONString(RestBean.success(list));
-    }
+    }*/
 
     /**
      * 获取文章正文 Post 文章id

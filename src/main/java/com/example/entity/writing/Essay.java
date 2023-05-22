@@ -18,7 +18,7 @@ import lombok.Data;
 public class Essay {
     int aid;
     String writer;
-    int Writingtime;
+    long Writingtime;
     String label;
     String photo;
     String background;
