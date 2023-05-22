@@ -70,6 +70,6 @@ public class AuthorizeController {
     @PostMapping("/essay/article")
     public String article(@RequestParam("aid") int aid) {
         Essay s = service.getarticle(aid);
-        return JSONObject.toJSONString(RestBean.success(s));
+        return JSONObject.toJSONString(s);
     }
 }

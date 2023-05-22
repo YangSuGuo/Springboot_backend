@@ -25,7 +25,7 @@ public interface usermapper {
     /**
      * 文章正文
      */
-    @Select("SELECT aid,text FROM article WHERE aid= #{aid}")
+    @Select("SELECT aid,pageview,text FROM article WHERE aid= #{aid}")
     Essay QuerythebodyoftheArticle(int aid);
 
     /**
