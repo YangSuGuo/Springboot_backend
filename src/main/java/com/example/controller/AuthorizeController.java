@@ -58,13 +58,8 @@ public class AuthorizeController {
         List<Essay> list = service.getlist(parameter);
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
-   /* @PostMapping("/essay/list")
-    public String list(@Length(min = 2, max = 20) @RequestParam("parameter") String parameter) {
-        List<Essay> list = service.getlist(parameter);
-        return JSONObject.toJSONString(RestBean.success(list));
-    }*/
 
-    /**
+  /**
      * 获取文章正文 Post 文章id
      *  todo 调用一次使文章阅读量++方法
      */
