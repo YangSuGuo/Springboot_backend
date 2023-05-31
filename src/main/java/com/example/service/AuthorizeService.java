@@ -16,8 +16,11 @@ public interface AuthorizeService extends UserDetailsService {
      */
     String getUserOpenId(String code);
 
+
     /**
-     * 获取文章列表，接收分类，返回列表
+     * 获取文章列表
+     * @param parameter 文章分类
+     * @return  List<Essay> 卡片列表
      */
     List<Essay> getlist(String parameter);
 
