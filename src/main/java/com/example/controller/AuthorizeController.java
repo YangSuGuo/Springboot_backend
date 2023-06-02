@@ -68,4 +68,9 @@ public class AuthorizeController {
         Essay s = service.getarticle(aid);
         return JSONObject.toJSONString(s);
     }
+    // todo 上传文章描述接口
+    // todo 上传文章正文接口
+    // todo 按用户名搜索文章列表接口
+    // todo 用户详细信息接口
+
 }
