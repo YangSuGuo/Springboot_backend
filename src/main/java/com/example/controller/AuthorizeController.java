@@ -6,14 +6,12 @@ import com.example.entity.writing.Essay;
 import com.example.service.AuthorizeService;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpSession;
+import org.apache.ibatis.annotations.Delete;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -58,7 +56,19 @@ public class AuthorizeController {
         List<Essay> list = service.getlist(parameter);
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
-
+    @GetMapping("/essay/alllist")
+    public ResponseEntity<List<Essay>> list() {
+        List<Essay> list = service.getalllist();
+        return new ResponseEntity<>(list, HttpStatus.OK);
+    }
+    /**
+     * 删除文章
+     */
+    @PostMapping("/essay/deletelist")
+    public RestBean<String> list(@RequestParam("aid") int aid) {
+        service.deletelist(aid);
+        return null;
+    }
   /**
      * 获取文章正文 Post 文章id
      *  todo 调用一次使文章阅读量++方法

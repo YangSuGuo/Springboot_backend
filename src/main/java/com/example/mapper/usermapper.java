@@ -2,6 +2,7 @@ package com.example.mapper;
 
 import com.example.entity.user.Account;
 import com.example.entity.writing.Essay;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -22,6 +23,13 @@ public interface usermapper {
     @Select("SELECT aid,writer,Writingtime,label,photo,background,pageview,title,Articleoverview FROM article WHERE label = #{parameter}")
     List<Essay> QueryByTag(String parameter);
 
+    @Select("SELECT aid,writer,Writingtime,label,photo,background,pageview,title,Articleoverview FROM article")
+    List<Essay> AllQueryByTag();
+    /**
+     * 删除文章列表
+     */
+    @Select("DELETE FROM article WHERE aid = #{aid}")
+    List<Essay> deletelist(int aid);
     /**
      * 文章正文
      */

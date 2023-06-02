@@ -24,6 +24,11 @@ public interface AuthorizeService extends UserDetailsService {
      */
     List<Essay> getlist(String parameter);
 
+    List<Essay> getalllist();
+    /**
+     * 删除文章列表
+     */
+    List<Essay> deletelist(int aid);
     /**
      * 获取文章正文
      */
