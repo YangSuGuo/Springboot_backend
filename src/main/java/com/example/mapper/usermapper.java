@@ -2,10 +2,10 @@ package com.example.mapper;
 
 import com.example.entity.user.Account;
 import com.example.entity.writing.Essay;
-import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -25,11 +25,18 @@ public interface usermapper {
 
     @Select("SELECT aid,writer,Writingtime,label,photo,background,pageview,title,Articleoverview FROM article")
     List<Essay> AllQueryByTag();
+
+    /**
+     * +=1 浏览量
+     */
+    @Select("UPDATE article SET pageview = (pageview + 1) WHERE aid = #{aid}")
+    Essay pageviewgaga(int aid);
     /**
      * 删除文章列表
      */
     @Select("DELETE FROM article WHERE aid = #{aid}")
     List<Essay> deletelist(int aid);
+
     /**
      * 文章正文
      */

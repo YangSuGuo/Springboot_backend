@@ -26,6 +26,10 @@ public interface AuthorizeService extends UserDetailsService {
 
     List<Essay> getalllist();
     /**
+     * 浏览量++
+     */
+    Essay updatepageviewgaga(int aid);
+    /**
      * 删除文章列表
      */
     List<Essay> deletelist(int aid);

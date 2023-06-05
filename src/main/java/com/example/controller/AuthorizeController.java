@@ -6,7 +6,6 @@ import com.example.entity.writing.Essay;
 import com.example.service.AuthorizeService;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpSession;
-import org.apache.ibatis.annotations.Delete;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -56,11 +55,13 @@ public class AuthorizeController {
         List<Essay> list = service.getlist(parameter);
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
+
     @GetMapping("/essay/alllist")
     public ResponseEntity<List<Essay>> list() {
         List<Essay> list = service.getalllist();
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
+
     /**
      * 删除文章
      */
@@ -69,14 +70,19 @@ public class AuthorizeController {
         service.deletelist(aid);
         return null;
     }
-  /**
+
+    /**
      * 获取文章正文 Post 文章id
-     *  todo 调用一次使文章阅读量++方法
+     *  todo 调用一次使文章阅读量++方法 ok
      */
     @PostMapping("/essay/article")
     public String article(@RequestParam("aid") int aid) {
         Essay s = service.getarticle(aid);
-        return JSONObject.toJSONString(s);
+        Essay pageview = service.updatepageviewgaga(aid);
+        if (pageview == null)
+            return JSONObject.toJSONString(s);
+        else
+            return JSONObject.toJSONString(s);
     }
     // todo 上传文章描述接口
     // todo 上传文章正文接口
