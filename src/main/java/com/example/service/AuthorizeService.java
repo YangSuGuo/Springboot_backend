@@ -23,7 +23,6 @@ public interface AuthorizeService extends UserDetailsService {
      * @return  List<Essay> 卡片列表
      */
     List<Essay> getlist(String parameter);
-
     List<Essay> getalllist();
     /**
      * 浏览量++

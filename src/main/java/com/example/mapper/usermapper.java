@@ -20,7 +20,7 @@ public interface usermapper {
     /**
      * 文章列表
      */
-    @Select("SELECT aid,writer,Writingtime,label,photo,background,pageview,title,Articleoverview FROM article WHERE label = #{parameter}")
+    @Select("SELECT aid,writer,Writingtime,label,photo,background,pageview,title,Articleoverview FROM article WHERE label = #{parameter} or writer = #{parameter}")
     List<Essay> QueryByTag(String parameter);
 
     @Select("SELECT aid,writer,Writingtime,label,photo,background,pageview,title,Articleoverview FROM article")

@@ -94,26 +94,29 @@ public class AuthorizeServiceImpl implements AuthorizeService {
     }
 
     @Override
-    public List<Essay> getalllist(){
+    public List<Essay> getalllist() {
         List<Essay> s = mapper.AllQueryByTag();
         return s;
     }
+
     /**
      * 浏览量++
      */
     @Override
-    public Essay updatepageviewgaga(int aid){
+    public Essay updatepageviewgaga(int aid) {
         Essay s = mapper.pageviewgaga(aid);
         return null;
     }
+
     /**
      * 删除文章列表
      */
     @Override
-    public List<Essay> deletelist(int aid){
+    public List<Essay> deletelist(int aid) {
         List<Essay> s = mapper.deletelist(aid);
         return s;
     }
+
     /**
      * 获取文章正文
      */
