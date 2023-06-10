@@ -2,6 +2,7 @@ package com.example.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.example.entity.RestBean;
+import com.example.entity.user.Account;
 import com.example.entity.writing.Essay;
 import com.example.service.AuthorizeService;
 import jakarta.annotation.Resource;
@@ -33,6 +34,15 @@ public class AuthorizeController {
             return RestBean.success("注册成功");
         else
             return RestBean.failure(400, s);
+    }
+
+    /**
+     * 用户信息
+     */
+    @PostMapping("/UserInformation")
+    public Account UserInformation(@Length(min = 2, max = 20) @RequestParam("user") String user) {
+        Account s = service.UserInformation(user);
+        return s;
     }
 
     /**
@@ -86,7 +96,7 @@ public class AuthorizeController {
     }
     // todo 上传文章描述接口
     // todo 上传文章正文接口
-    // todo 按用户名搜索文章列表接口
+    // todo 按用户名搜索文章列表接口 ok
     // todo 用户详细信息接口
 
 }

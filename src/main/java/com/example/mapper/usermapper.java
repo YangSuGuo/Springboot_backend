@@ -5,7 +5,6 @@ import com.example.entity.writing.Essay;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -17,6 +16,11 @@ public interface usermapper {
     @Select("select * from user where username = #{text} or email = #{text} or cellphone = #{text}")
     Account findAccountByNameOrEmail(String text);
 
+    /**
+     * 用户信息
+     */
+    @Select("SELECT * FROM user WHERE username = #{user}")
+    Account UserInformation(String user);
     /**
      * 文章列表
      */
@@ -31,6 +35,7 @@ public interface usermapper {
      */
     @Select("UPDATE article SET pageview = (pageview + 1) WHERE aid = #{aid}")
     Essay pageviewgaga(int aid);
+
     /**
      * 删除文章列表
      */

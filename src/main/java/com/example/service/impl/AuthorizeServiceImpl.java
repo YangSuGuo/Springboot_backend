@@ -52,6 +52,15 @@ public class AuthorizeServiceImpl implements AuthorizeService {
     }
 
     /**
+     * 用户信息
+     */
+    @Override
+    public Account UserInformation(String user) {
+        Account s = mapper.UserInformation(user);
+        return s;
+    }
+
+    /**
      * 注册
      */
     @Override
