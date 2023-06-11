@@ -21,6 +21,7 @@ public interface usermapper {
      */
     @Select("SELECT * FROM user WHERE username = #{user}")
     Account UserInformation(String user);
+
     /**
      * 文章列表
      */
@@ -47,6 +48,12 @@ public interface usermapper {
      */
     @Select("SELECT aid,pageview,text FROM article WHERE aid= #{aid}")
     Essay QuerythebodyoftheArticle(int aid);
+
+    /**
+     * 上传文章
+     */
+    @Select("INSERT INTO article (writer, Writingtime, label, background, title, Articleoverview, text) VALUES (#{writer}, #{Writingtime}, #{label}, #{background}, #{title}, #{Articleoverview}, #{text});")
+    Essay Insertarecord(String writer, String Writingtime, String label, String background, String title, String Articleoverview, String text);
 
     /**
      * 注册

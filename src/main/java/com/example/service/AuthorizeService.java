@@ -47,5 +47,9 @@ public interface AuthorizeService extends UserDetailsService {
      * 获取文章正文
      */
     Essay getarticle(int aid);
+    /**
+     * 上传文章
+     */
+    Essay Insertarecord(String writer, String Writingtime, String label, String background, String title, String Articleoverview, String text);
 }
 

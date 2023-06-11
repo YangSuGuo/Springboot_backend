@@ -134,4 +134,13 @@ public class AuthorizeServiceImpl implements AuthorizeService {
         Essay s = mapper.QuerythebodyoftheArticle(aid);
         return s;
     }
+
+    /**
+     * 上传文章
+     */
+    @Override
+    public Essay Insertarecord(String writer, String Writingtime, String label, String background, String title, String Articleoverview, String text) {
+        Essay s = mapper.Insertarecord(writer, Writingtime, label, background, title, Articleoverview, text);
+        return s;
+    }
 }
