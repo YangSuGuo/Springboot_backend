@@ -12,12 +12,12 @@ import lombok.Data;
  * password         varchar(255) null comment '密码',
  * nickname         varchar(20)  null comment '昵称',
  * photo            varchar(255) null comment '头像',
- * birthday         int          null comment '生日',
+ * birthday         varchar(50)  null comment '生日',
  * address          varchar(100) null comment '地址',
  * age              int          null comment '年龄',
  * introduction     varchar(300) null comment '个人简介',
  * pageview         int          null comment '浏览量',
- * Registrationtime int          null comment '注册时间'
+ * Registrationtime varchar(50)  null comment '注册时间'
  */
 @Data
 public class Account {
@@ -30,10 +30,11 @@ public class Account {
     String password;
     String nickname;
     String photo;
-    int birthday;
+    String birthday;
     String address;
     int age;
     String introduction;
     int pageview;
-    int Registrationtime;
+    String Registrationtime;
+    String gender;
 }

@@ -52,6 +52,15 @@ public class AuthorizeServiceImpl implements AuthorizeService {
     }
 
     /**
+     * 用户信息
+     */
+    @Override
+    public Account UserInformation(String user) {
+        Account s = mapper.UserInformation(user);
+        return s;
+    }
+
+    /**
      * 注册
      */
     @Override
@@ -94,24 +103,44 @@ public class AuthorizeServiceImpl implements AuthorizeService {
     }
 
     @Override
-    public List<Essay> getalllist(){
+    public List<Essay> getalllist() {
         List<Essay> s = mapper.AllQueryByTag();
         return s;
     }
+
+    /**
+     * 浏览量++
+     */
+    @Override
+    public Essay updatepageviewgaga(int aid) {
+        Essay s = mapper.pageviewgaga(aid);
+        return null;
+    }
+
     /**
      * 删除文章列表
      */
     @Override
-    public List<Essay> deletelist(int aid){
+    public List<Essay> deletelist(int aid) {
         List<Essay> s = mapper.deletelist(aid);
         return s;
     }
+
     /**
      * 获取文章正文
      */
     @Override
     public Essay getarticle(int aid) {
         Essay s = mapper.QuerythebodyoftheArticle(aid);
+        return s;
+    }
+
+    /**
+     * 上传文章
+     */
+    @Override
+    public Essay Insertarecord(String writer, String Writingtime, String label, String background, String title, String Articleoverview, String text) {
+        Essay s = mapper.Insertarecord(writer, Writingtime, label, background, title, Articleoverview, text);
         return s;
     }
 }
